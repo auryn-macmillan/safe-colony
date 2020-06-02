@@ -18,6 +18,7 @@
          >
            <q-scroll-area style="height: calc(100% - 150px); margin-top: 48px">
              <q-list padding>
+
                <q-item clickable v-ripple>
                  <q-item-section>
                    All Domains
@@ -49,6 +50,8 @@
                </q-item>
              </q-list>
            </q-scroll-area>
+          <div class="bg-primary absolute-top" style="height: 48px">
+          </div>
          </q-drawer>
 
     <q-page-container>
