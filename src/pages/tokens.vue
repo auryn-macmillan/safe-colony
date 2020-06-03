@@ -9,10 +9,11 @@
         >
           <q-item-section avatar>
             <q-avatar>
-              <img src="https://cdn.quasar.dev/img/boy-avatar.png">
+              <vth-blockie :string="token.address" />
             </q-avatar>
           </q-item-section>
           <q-item-section>{{ token.name }}</q-item-section>
+          <q-item-section class="text-right" v-money="money">{{ token.balance }} {{ token.symbol }}</q-item-section>
         </q-item>
       </q-list>
     </div>
@@ -32,19 +33,19 @@ export default {
           address: '0x3e828ac5c480069d4765654fb4b8733b910b13b2',
           name: 'CLNY',
           symbol: 'CLNY',
-          balance: 0
+          balance: 10000
         },
         {
           address: '0x0000000000000000000000000000000000000000',
           name: 'Ether',
           symbol: 'ETH',
-          balance: 0
+          balance: 50
         },
         {
           address: '0x6b175474e89094c44da98b954eedeac495271d0f',
           name: 'DAI',
-          symbol: 'ETH',
-          balance: 0
+          symbol: 'DAI',
+          balance: 5000
         }
       ]
     }
