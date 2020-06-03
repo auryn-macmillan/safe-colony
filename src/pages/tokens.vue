@@ -1,5 +1,5 @@
 <template>
-  <div class="q-pa-md" style="max-width: 480px">
+  <div class="q-pa-xs" style="max-width: 480px">
       <q-list bordered>
         <q-item
           clickable
@@ -13,7 +13,7 @@
             </q-avatar>
           </q-item-section>
           <q-item-section>{{ token.name }}</q-item-section>
-          <q-item-section class="text-right" v-money="money">{{ token.balance }} {{ token.symbol }}</q-item-section>
+          <q-item-section class="text-right">{{ token.balance }} {{ token.symbol }}</q-item-section>
         </q-item>
       </q-list>
     </div>

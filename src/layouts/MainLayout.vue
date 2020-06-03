@@ -16,38 +16,41 @@
            :width="150"
            :breakpoint="600"
          >
-           <q-scroll-area style="height: calc(100% - 150px); margin-top: 48px">
-             <q-list padding>
-
-               <q-item clickable v-ripple>
-                 <q-item-section>
-                   All Domains
-                 </q-item-section>
-               </q-item>
-
-               <q-item active clickable v-ripple>
-                 <q-item-section>
-                   Rewards
-                 </q-item-section>
-               </q-item>
-
-               <q-item clickable v-ripple>
-                 <q-item-section>
-                   Root
-                 </q-item-section>
-               </q-item>
-
-               <q-item clickable v-ripple>
-                 <q-item-section>
-                   Domain 1
-                 </q-item-section>
-               </q-item>
-
-               <q-item clickable v-ripple>
-                 <q-item-section>
-                   Domain 2
-                 </q-item-section>
-               </q-item>
+           <q-scroll-area style="height: calc(100% - 48px); margin-top: 48px">
+             <q-list
+             padding>
+              <div
+                v-for="domain in domains"
+                :key="domain.id"
+              >
+                <q-item
+                 clickable
+                 v-ripple
+                 v-if="domain.children === null"
+                 >
+                  <q-item-section>
+                    {{ domain.name }}
+                  </q-item-section>
+                </q-item>
+                <q-expansion-item
+                 clickable
+                 v-ripple
+                 v-if="domain.children"
+                 expand-separator
+                 :label="domain.name"
+                 >
+                   <q-item
+                    clickable
+                    v-ripple
+                    v-for="children in domain.children"
+                    :key="children.id"
+                    >
+                     <q-item-section>
+                       -- {{ children.name }}
+                     </q-item-section>
+                   </q-item>
+                </q-expansion-item>
+              </div>
              </q-list>
            </q-scroll-area>
           <div class="bg-primary absolute-top" style="height: 48px">
@@ -65,7 +68,41 @@
 export default {
   data () {
     return {
-      left: false
+      domains: [
+        {
+          name: 'All Domains',
+          id: null,
+          children: null
+        },
+        {
+          name: 'Rewards Pot',
+          id: 0,
+          children: null
+        },
+        {
+          name: 'Root',
+          id: 1,
+          children: [
+            {
+              name: 'Domain 2',
+              id: 2,
+              children: null
+            },
+            {
+              name: 'Domain 3',
+              id: 3,
+              children: null
+            }
+          ]
+        }
+      ],
+      computed: {
+        hasChildren: function () {
+          if (this.children === null) {
+            return true
+          }
+        }
+      }
     }
   }
 }
