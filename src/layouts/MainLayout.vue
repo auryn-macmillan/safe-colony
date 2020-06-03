@@ -5,8 +5,8 @@
 
       <q-tabs align="left">
         <q-route-tab to="/" label="Tokens" />
-        <q-route-tab to="/" label="Permissions" />
-        <q-route-tab to="/" label="Rewards" />
+        <q-route-tab to="/Permissions" label="Permissions" />
+        <q-route-tab to="/rewards" label="Rewards" />
       </q-tabs>
     </q-header>
 
