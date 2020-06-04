@@ -4,7 +4,7 @@
     <q-header class="bg-primary text-white">
 
       <q-tabs align="left">
-        <q-route-tab to="/" label="Tokens" />
+        <q-route-tab to="/tokens" label="Tokens" />
         <q-route-tab to="/Permissions" label="Permissions" />
         <q-route-tab to="/rewards" label="Rewards" />
       </q-tabs>
@@ -27,26 +27,34 @@
                  clickable
                  v-ripple
                  v-if="domain.children === null"
+                 :to="domain.route"
+                 exact
                  >
                   <q-item-section>
                     {{ domain.name }}
                   </q-item-section>
                 </q-item>
                 <q-expansion-item
-                 clickable
-                 v-ripple
-                 v-if="domain.children"
-                 expand-separator
-                 :label="domain.name"
+                  dense-toggle
+                  :content-inset-level="0.20"
+                  clickable
+                  v-ripple
+                  v-if="domain.children"
+                  expand-separator
+                  :label="domain.name"
+                  :to="domain.route"
+                  exact
                  >
                    <q-item
                     clickable
                     v-ripple
                     v-for="children in domain.children"
                     :key="children.id"
+                    :to="children.route"
+                    exact
                     >
                      <q-item-section>
-                       -- {{ children.name }}
+                       {{ children.name }}
                      </q-item-section>
                    </q-item>
                 </q-expansion-item>
@@ -71,38 +79,36 @@ export default {
       domains: [
         {
           name: 'All Domains',
+          route: 'all',
           id: null,
           children: null
         },
         {
           name: 'Rewards Pot',
+          route: 'rewards',
           id: 0,
           children: null
         },
         {
           name: 'Root',
+          route: 'root',
           id: 1,
           children: [
             {
               name: 'Domain 2',
+              route: '2',
               id: 2,
               children: null
             },
             {
               name: 'Domain 3',
+              route: '3',
               id: 3,
               children: null
             }
           ]
         }
-      ],
-      computed: {
-        hasChildren: function () {
-          if (this.children === null) {
-            return true
-          }
-        }
-      }
+      ]
     }
   }
 }
