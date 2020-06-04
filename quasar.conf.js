@@ -9,6 +9,7 @@
 
 module.exports = function (/* ctx */) {
   return {
+		publicPath: process.env.NODE_ENV === "production" ? "/safe-colony/" : "/",
     // https://quasar.dev/quasar-cli/cli-documentation/supporting-ie
     supportIE: false,
 
