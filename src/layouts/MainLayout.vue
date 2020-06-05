@@ -44,6 +44,9 @@
                   :label="domain.name"
                   :to="domain.route"
                   exact
+                  @click.stop=""
+                  @mousedown.stop=""
+                  @touchstart.stop=""
                  >
                    <q-item
                     clickable
@@ -52,6 +55,9 @@
                     :key="children.id"
                     :to="children.route"
                     exact
+                    @click.stop=""
+                    @mousedown.stop=""
+                    @touchstart.stop=""
                     >
                      <q-item-section>
                        {{ children.name }}
